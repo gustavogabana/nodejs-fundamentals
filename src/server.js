@@ -1,4 +1,5 @@
 import http from 'node:http'
+import { randomUUID } from 'node:crypto'
 import { json } from './middlewares/json.js'
 import { Database } from './database.js'
 
