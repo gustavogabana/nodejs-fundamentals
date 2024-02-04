@@ -9,8 +9,6 @@ import { routes } from './routes.js'
 // http://localhost:3000/users?userId=1&name=Gustavo
 // GET/POST/DELETE http://localhost:3000/users/1
 
-
-
 const server = http.createServer(async (req, res) => {
 
     await json(req, res) // middleware
@@ -22,6 +20,8 @@ const server = http.createServer(async (req, res) => {
 
     if (route) {
         const routeParams = req.url.match(route.path)
+
+        req.params = { ...routeParams.groups }
 
         return route.handler(req, res)
     }
